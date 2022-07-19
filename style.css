@@ -1,0 +1,50 @@
+html {
+
+    background-color: #111;
+}
+
+body {
+  background-color: #111;
+  color: #EEE;
+  font-family: 'Roboto Slab', serif;
+}
+
+a{
+
+    font-size:120%  ;
+    font-family: monospace;
+    padding-left: 7%;
+    color : white
+
+}
+
+h3{
+
+    text-align: center;
+    color: white;
+    font-style: oblique;
+    font-family: monospace;
+}
+
+img {
+
+    text-align: left;
+    width : 150px;
+    height : 150px;
+
+
+}
+
+.frame1 {
+  max-width: 10000px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border: 2px solid #EEE;
+  margin: 30px;
+  padding: 10px;
+}
+
+.series-frame h2 {
+  margin-right: 20px;
+}
