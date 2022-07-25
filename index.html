@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
+    <img src="images/logo.png" alt="Logo_page" title="logosite"/>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="=.application.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" >
+
+
      <title>JustStreamIt</title>
-     <img src="images/logo.png" alt="Logo_page" title="logosite"/>
+
     <a href="Pages/page1.html" style="color:#FFFFFF;" target="_blank">Home</a>
     <a href="Pages/page2.html" style="color:#FFFFFF;" target="_blank">Catégories</a>
+    </br>
+    </br>
+    </br>
+    <h3>Tu ne sais pas quoi regarder pour passer une bonne soirée ? Alors JustStreamIt .....</h3>
 
 
 </head>
@@ -16,41 +22,64 @@
 <body>
     <p>
 
-        <div class="frame1">
+        <div id="section1" class="frame1">
+            <div>
+                <div id="best-movie_title"></div>
+                <div id="best-movie_description"></div>
+                <button id="myBtn">More info</button>
+            </div>
 
-        <p id="first-episode-info"></p>
-        </div>
-        <h3>Meilleur film</h3>
-        <div class="frame1">
-
-        <p id="second-episode-info"></p>
-        </div>
-        <h3>Films les mieux notés</h3>
-        <div class="frame1">
-
-        <p id="third-episode-info"></p>
-        </div>
-        <h3>Action</h3>
-        <div class="frame1">
-
-        <p id="third-episode-info"></p>
-        </div>
-        <h3>Fantasy</h3>
-        <div class="frame1">
-
-        <p id="third-episode-info"></p>
+            <p id="top1"></p>
         </div>
 
-        <h3> Sci-Fi </h3>
+        <h3>...... Films les mieux notés ......</h3>
+        <div id="section2" class="frame1">
+            <p id="top7"></p>
+        </div>
 
-    </p>
+        <h3>...... Action ......</h3>
+        <div id="section3" class="frame1">
+            <p id="category1"></p>
+        </div>
+
+        <h3>...... Fantasy ...... </h3>
+        <div id="section4" class="frame1">
+            <p id="category2"></p>
+        </div>
+
+        <h3>...... Sci-Fi ......</h3>
+        <div id="section5" class="frame1">
+            <p id="category3"></p>
+        </div>
+
+
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content" id="modalContent">
+            <div id="image_film"> </div>
+            <p id="Modal_title"></p>
+            <p id="Modal_genre"></p>
+            <p id="Modal_date"></p>
+            <p id="Modal_rated"></p>
+            <p id="Modal_score"></p>
+            <p id="Modal_directors"></p>
+            <p id="Modal_actors"></p>
+            <p id="Modal_duration"></p>
+            <p id="Modal_contry"></p>
+            <p id="Modal_Box_office_result"></p>
+            <p id="Modal_Description"></p>
+
+
+
+            <button id="close"> Close </button>
+        </div>
+    </div>
 
 
 
 
 
-
-
-
+<script src="application.js"></script>
 </body>
 </html>
