@@ -8,12 +8,23 @@ var btn = document.getElementById("myBtn");
 var clo = document.getElementById("close");
 
 //Dispaly movie info
-fetch("http://localhost:8000/api/v1/titles/9008642")
+function dispaly_modal(movie_id) {
+
+
+fetch("http://localhost:8000/api/v1/titles/" + movie_id)
   .then(response => response.json())
   .then (data => {
-     const img = document.createElement("img");
-     img.src = data.image_url;
-     image_film.appendChild(img);
+
+
+     //const img = document.createElement("img");
+     //img.src = data.image_url;
+     //image_film.appendChild(img);
+
+
+     //const img = document.getElementById("image_film");
+     //document.querySelector("#best-movie__img").appendChild(img);
+
+
      Modal_title.textContent = `Titre : ${data.title}`
      Modal_genre.textContent = `Genre : ${data.genres}`
      Modal_date.textContent = `date sortie : ${data.date_published}`
@@ -28,10 +39,15 @@ fetch("http://localhost:8000/api/v1/titles/9008642")
 
 
 
+
+
+
   })
   .catch(error => {
     console.warn('Error', err);
   });
+
+}
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -52,6 +68,7 @@ window.onclick = function(event) {
 }
 
 
+
 // fetch API
 //best movie
 fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=1")
@@ -61,39 +78,39 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
      const image = document.createElement("img");
      image.src = data.results[0].image_url;
      section1.appendChild(image);
+     image.onclick = function() {
+            dispaly_modal(data.results[0].id);
+            //9008642 id movie
+            modal.style.display = "block";
+        }
 
      console.log("data test:", data);
-            })
-
-  .then (
-     data => {
-     const titre = document.createElement("p");
-     //let elt = document.getElementById("best-movie_title");
-     //elt.appendChild(titre);
-
-     //best-movie_title.appendChild(titre);
-
-     document.querySelector("#best-movie_title").appendChild(titre);
-
-
-     //const resume = document.createElement("p");
-     //resume.src = data.results[0].description;
-     //best-movie_description.appendChild(resume);
-  })
+})
   .catch(error => {
     console.warn('Error', err);
   });
 
+
+
 // 7 best movies
 fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=7")
   .then(response => response.json())
-
   .then (
      data => {
      for (let i = 0; i < 8; i++) {
         const image = document.createElement("img");
         image.src = data.results[i].image_url;
         section2.appendChild(image);
+
+        image.onclick = function() {
+        modal.style.display = "block";
+        dispaly_modal(data.results[i].id);
+
+
+
+
+        }
+
      }
 
   })
@@ -101,10 +118,20 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
     console.warn('Error', err);
   });
 
+fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=1")
+  .then(response => response.json())
+  .then (
+     data => {
+     const titre = document.createElement("p");
+     title.src = data.results[0].title;
+     best-movie_description.appendChild(titre);
+        })
 
 
 
-//Acton movies
+
+//Action movies
+
 fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=7")
   .then(response => response.json())
 
@@ -114,6 +141,13 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_
         const image = document.createElement("img");
         image.src = data.results[i].image_url;
         section3.appendChild(image);
+
+        image.onclick = function() {
+        modal.style.display = "block";
+        dispaly_modal(data.results[i].id);
+
+        }
+
      }
 
   })
@@ -132,6 +166,12 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Fantasy&sort_by=-imdb
         const image = document.createElement("img");
         image.src = data.results[i].image_url;
         section4.appendChild(image);
+
+        image.onclick = function() {
+        modal.style.display = "block";
+        dispaly_modal(data.results[i].id);
+
+        }
      }
 
   })
@@ -150,9 +190,25 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
         const image = document.createElement("img");
         image.src = data.results[i].image_url;
         section5.appendChild(image);
+
+        image.onclick = function() {
+        modal.style.display = "block";
+        dispaly_modal(data.results[i].id);
+
+        }
      }
 
   })
   .catch(error => {
     console.warn('Error', err);
   });
+
+
+
+
+//dispaly_modal(1508669);
+dispaly_modal(9008642);
+
+
+
+
