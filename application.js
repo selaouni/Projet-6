@@ -1,30 +1,37 @@
+//-----------------------------------------Modal creation-----------------------------------------------------------------------------
 // Get the modal
 var modal = document.getElementById("myModal");
-
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
+// Get the element that closes the modal
 var clo = document.getElementById("close");
-
-//Dispaly movie info
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+// When the user close the modal
+clo.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+//----------------------------------------Dispaly movie info--------------------------------------------------------------------------------------
+var img = document.createElement("img");
 function dispaly_modal(movie_id) {
-
 
 fetch("http://localhost:8000/api/v1/titles/" + movie_id)
   .then(response => response.json())
   .then (data => {
+     // add the image in the modal
+     img.src = data.image_url;
+     var elm_html = document.getElementById("image_film");
+     elm_html.appendChild(img);
 
-
-     //const img = document.createElement("img");
-     //img.src = data.image_url;
-     //image_film.appendChild(img);
-
-
-     //const img = document.getElementById("image_film");
-     //document.querySelector("#best-movie__img").appendChild(img);
-
-
+    // add movie information in the modal
      Modal_title.textContent = `Titre : ${data.title}`
      Modal_genre.textContent = `Genre : ${data.genres}`
      Modal_date.textContent = `date sortie : ${data.date_published}`
@@ -37,11 +44,6 @@ fetch("http://localhost:8000/api/v1/titles/" + movie_id)
      Modal_Box_office_result.textContent = `Résultat au Box office : ${data.year}`
      Modal_Description.textContent = `résumé : ${data.description}`
 
-
-
-
-
-
   })
   .catch(error => {
     console.warn('Error', err);
@@ -49,28 +51,8 @@ fetch("http://localhost:8000/api/v1/titles/" + movie_id)
 
 }
 
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-
-// When the user close the modal
-clo.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-
-
-// fetch API
-//best movie
+//----------------------------------------------Fetch API---------------------------------------------------
+// Best movie
 fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=1")
   .then(response => response.json())
   .then (
@@ -78,21 +60,18 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
      const image = document.createElement("img");
      image.src = data.results[0].image_url;
      section1.appendChild(image);
-     image.onclick = function() {
-            dispaly_modal(data.results[0].id);
-            //9008642 id movie
-            modal.style.display = "block";
-        }
 
-     console.log("data test:", data);
+     image.onclick = function() {
+     dispaly_modal(data.results[0].id);
+     modal.style.display = "block";
+        }
 })
   .catch(error => {
     console.warn('Error', err);
   });
 
 
-
-// 7 best movies
+// Seven best movies
 fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=7")
   .then(response => response.json())
   .then (
@@ -101,18 +80,13 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
         const image = document.createElement("img");
         image.src = data.results[i].image_url;
         section2.appendChild(image);
-
+        //add clickable image
         image.onclick = function() {
         modal.style.display = "block";
         dispaly_modal(data.results[i].id);
 
-
-
-
         }
-
      }
-
   })
   .catch(error => {
     console.warn('Error', err);
@@ -128,9 +102,7 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
         })
 
 
-
-
-//Action movies
+//Category1:: Action movies
 
 fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=7")
   .then(response => response.json())
@@ -141,7 +113,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_
         const image = document.createElement("img");
         image.src = data.results[i].image_url;
         section3.appendChild(image);
-
+        //add clickable image
         image.onclick = function() {
         modal.style.display = "block";
         dispaly_modal(data.results[i].id);
@@ -156,7 +128,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_
   });
 
 
-//Fantasy movies
+//Category2: Fantasy movies
 fetch("http://localhost:8000/api/v1/titles/?genre_contains=Fantasy&sort_by=-imdb_score%2C-votes&page_size=7")
   .then(response => response.json())
 
@@ -166,7 +138,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Fantasy&sort_by=-imdb
         const image = document.createElement("img");
         image.src = data.results[i].image_url;
         section4.appendChild(image);
-
+        //add clickable image
         image.onclick = function() {
         modal.style.display = "block";
         dispaly_modal(data.results[i].id);
@@ -180,7 +152,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Fantasy&sort_by=-imdb
   });
 
 
-//Sci-Fi movies
+//Category3: Sci-Fi movies
 fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_score%2C-votes&page_size=7")
   .then(response => response.json())
 
@@ -190,7 +162,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
         const image = document.createElement("img");
         image.src = data.results[i].image_url;
         section5.appendChild(image);
-
+        //add clickable image
         image.onclick = function() {
         modal.style.display = "block";
         dispaly_modal(data.results[i].id);
@@ -204,10 +176,22 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
   });
 
 
-
-
-//dispaly_modal(1508669);
-dispaly_modal(9008642);
+//-----------------------------------------Carousel---------------------------------------------------
+//
+//const slidesContainer = document.getElementById("section2");
+//const slide = document.querySelector(".slide");
+//const prevButton = document.getElementById("slide-arrow-prev1");
+//const nextButton = document.getElementById("slide-arrow-next"1);
+//
+//nextButton.addEventListener("click", () => {
+//  const slideWidth = slide.clientWidth;
+//  slidesContainer.scrollLeft += slideWidth;
+//});
+//
+//prevButton.addEventListener("click", () => {
+//  const slideWidth = slide.clientWidth;
+//  slidesContainer.scrollLeft -= slideWidth;
+//});
 
 
 
