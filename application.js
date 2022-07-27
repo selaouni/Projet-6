@@ -21,7 +21,7 @@ window.onclick = function(event) {
 }
 //----------------------------------------Dispaly movie info--------------------------------------------------------------------------------------
 var img = document.createElement("img");
-function dispaly_modal(movie_id) {
+function display_modal(movie_id) {
 
 fetch("http://localhost:8000/api/v1/titles/" + movie_id)
   .then(response => response.json())
@@ -32,17 +32,17 @@ fetch("http://localhost:8000/api/v1/titles/" + movie_id)
      elm_html.appendChild(img);
 
     // add movie information in the modal
-     Modal_title.textContent = `Titre : ${data.title}`
-     Modal_genre.textContent = `Genre : ${data.genres}`
-     Modal_date.textContent = `date sortie : ${data.date_published}`
-     Modal_rated.textContent = `rated : ${data.votes}`
-     Modal_score.textContent = `Score : ${data.imdb_score}`
-     Modal_directors.textContent = `Réalisateur : ${data.directors}`
-     Modal_actors.textContent = `Acteurs :  ${data.actors}`
-     Modal_duration.textContent = `Durée (min) :  ${data.duration}`
-     Modal_contry.textContent = `Pays : ${data.countries}`
-     Modal_Box_office_result.textContent = `Résultat au Box office : ${data.year}`
-     Modal_Description.textContent = `résumé : ${data.description}`
+     Modal_title.textContent = `Titre : ${data.title}`;
+     Modal_genre.textContent = `Genre : ${data.genres}`;
+     Modal_date.textContent = `date sortie : ${data.date_published}`;
+     Modal_rated.textContent = `rated : ${data.votes}`;
+     Modal_score.textContent = `Score : ${data.imdb_score}`;
+     Modal_directors.textContent = `Réalisateur : ${data.directors}`;
+     Modal_actors.textContent = `Acteurs :  ${data.actors}`;
+     Modal_duration.textContent = `Durée (min) :  ${data.duration}`;
+     Modal_contry.textContent = `Pays : ${data.countries}`;
+     Modal_Box_office_result.textContent = `Résultat au Box office : ${data.year}`;
+     Modal_Description.textContent = `résumé : ${data.description}`;
 
   })
   .catch(error => {
@@ -57,19 +57,39 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
   .then(response => response.json())
   .then (
      data => {
+     display_info_best_movie(data.results[0].id);
      const image = document.createElement("img");
      image.src = data.results[0].image_url;
-     section1.appendChild(image);
-
+     image_best_movie.appendChild(image);
+     console.log(data)
      image.onclick = function() {
-     dispaly_modal(data.results[0].id);
+     display_modal(data.results[0].id);
      modal.style.display = "block";
+
         }
 })
   .catch(error => {
     console.warn('Error', err);
   });
 
+//title and description display
+function display_info_best_movie(movie_id) {
+fetch("http://localhost:8000/api/v1/titles/" + movie_id)
+  .then(response => response.json())
+  .then (
+     data => {
+     var best_movie_title = document.getElementById("best_movie_title");
+     best_movie_title.textContent = `${data.title}`;
+
+     var best_movie_description = document.getElementById("best_movie_description");
+     best_movie_description.textContent = `${data.description}`;
+
+
+
+        })
+
+}
+//display_info_best_movie(9008642)
 
 // Seven best movies
 fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=7")
@@ -83,7 +103,7 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
         //add clickable image
         image.onclick = function() {
         modal.style.display = "block";
-        dispaly_modal(data.results[i].id);
+        display_modal(data.results[i].id);
 
         }
      }
@@ -92,14 +112,8 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
     console.warn('Error', err);
   });
 
-fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=1")
-  .then(response => response.json())
-  .then (
-     data => {
-     const titre = document.createElement("p");
-     title.src = data.results[0].title;
-     best-movie_description.appendChild(titre);
-        })
+
+
 
 
 //Category1:: Action movies
@@ -116,7 +130,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_
         //add clickable image
         image.onclick = function() {
         modal.style.display = "block";
-        dispaly_modal(data.results[i].id);
+        display_modal(data.results[i].id);
 
         }
 
@@ -141,7 +155,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Fantasy&sort_by=-imdb
         //add clickable image
         image.onclick = function() {
         modal.style.display = "block";
-        dispaly_modal(data.results[i].id);
+        display_modal(data.results[i].id);
 
         }
      }
@@ -165,7 +179,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
         //add clickable image
         image.onclick = function() {
         modal.style.display = "block";
-        dispaly_modal(data.results[i].id);
+        display_modal(data.results[i].id);
 
         }
      }
@@ -177,6 +191,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
 
 
 //-----------------------------------------Carousel---------------------------------------------------
+//function carousel() {
 //
 //const slidesContainer = document.getElementById("section2");
 //const slide = document.querySelector(".slide");
@@ -192,7 +207,6 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
 //  const slideWidth = slide.clientWidth;
 //  slidesContainer.scrollLeft -= slideWidth;
 //});
-
-
+//}
 
 

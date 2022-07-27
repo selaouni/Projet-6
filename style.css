@@ -20,6 +20,15 @@ a{
 
 }
 
+.description_display{
+
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ font-family: monospace;
+}
+
+
 h3{
     text-align: center;
     color: white;
@@ -111,3 +120,5 @@ button{
   color: black;
   text-decoration: none;
   cursor: pointer;
+
+
