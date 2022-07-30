@@ -1,7 +1,6 @@
 html {
 
     background-color: #111;
-
     text : #FFFFFF;
 }
 
@@ -24,8 +23,6 @@ a{
  display: block;
 
  font-family: monospace;
-
-
 }
 
 
@@ -42,7 +39,27 @@ img {
     height : 150px;
 }
 
+.btn_prev {
 
+  left: -25px;
+  padding-left: 0.30rem;
+  border-radius: 0 2rem 2rem 0;
+
+
+
+
+}
+
+.btn_next {
+
+  right: -25px;
+  padding-left: 0.30rem;
+  border-radius: 2rem 0 0 2rem;
+
+
+
+
+}
 
 .frame1 {
   max-width: 1100px;
@@ -105,7 +122,7 @@ button{
   padding: 20px;
   border: 1px solid #888;
   width: 30%; /* Could be more or less, depending on screen size */
-  height: 70%;
+  height: 85%;
 
 }
 
@@ -122,5 +139,7 @@ button{
   color: black;
   text-decoration: none;
   cursor: pointer;
+
+
 
 

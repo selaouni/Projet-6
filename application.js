@@ -36,12 +36,12 @@ fetch("http://localhost:8000/api/v1/titles/" + movie_id)
      Modal_actors.textContent = `Acteurs :  ${data.actors}`;
      Modal_duration.textContent = `Durée (min) :  ${data.duration}`;
      Modal_contry.textContent = `Pays : ${data.countries}`;
-     Modal_Box_office_result.textContent = `Résultat au Box office : ${data.avg_vote}`;
+     Modal_Box_office_result.textContent = `Résultat au Box office : ${data.worldwide_gross_income}`;
      Modal_Description.textContent = `résumé : ${data.description}`;
 
   })
   .catch(error => {
-    console.warn('Error', err);
+    console.warn('Error', error);
   });
 
 }
@@ -56,7 +56,7 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
      var image = document.createElement("img");
      image.src = data.results[0].image_url;
      image_best_movie.appendChild(image);
-     console.log(data)
+
 
      btn.onclick = function() {
      display_modal(data.results[0].id);
@@ -64,13 +64,13 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
      }
 
      image.onclick = function() {
-     display_modal(data.results[0].id);
-     modal.style.display = "block";
+        display_modal(data.results[0].id);
+        modal.style.display = "block";
 
      }
 })
   .catch(error => {
-    console.warn('Error', err);
+    console.warn('Error', error);
   });
 
 //title and description display
@@ -85,8 +85,6 @@ fetch("http://localhost:8000/api/v1/titles/" + movie_id)
      var best_movie_description = document.getElementById("best_movie_description");
      best_movie_description.textContent = `${data.description}`;
 
-
-
         })
 
 }
@@ -96,20 +94,25 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
   .then(response => response.json())
   .then (
      data => {
-     for (let i = 0; i < 8; i++) {
+
+     for (let i = 0; i < 7; i++) {
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
-        section2.appendChild(image);
+        image.className = "class_image";
+        //image.classList.add("class_image");
+        //image.setAttribute('class', 'class_image');
+        section1.appendChild(image);
+
         //add clickable image
         image.onclick = function() {
-        modal.style.display = "block";
-        display_modal(data.results[i].id);
-
+            modal.style.display = "block";
+            display_modal(data.results[i].id);
         }
      }
+    carousel(1);
   })
   .catch(error => {
-    console.warn('Error', err);
+    console.warn('Error', error);
   });
 
 
@@ -123,22 +126,23 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_
 
   .then (
      data => {
-     for (let i = 0; i < 8; i++) {
+     for (let i = 0; i < 7; i++) {
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
-        section3.appendChild(image);
+        image.className = "class_image";
+        section2.appendChild(image);
         //add clickable image
         image.onclick = function() {
-        modal.style.display = "block";
-        display_modal(data.results[i].id);
+            modal.style.display = "block";
+            display_modal(data.results[i].id);
 
         }
 
      }
-
+    carousel(2);
   })
   .catch(error => {
-    console.warn('Error', err);
+    console.warn('Error', error);
   });
 
 
@@ -148,21 +152,22 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Fantasy&sort_by=-imdb
 
   .then (
      data => {
-     for (let i = 0; i < 8; i++) {
+     for (let i = 0; i < 7; i++) {
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
-        section4.appendChild(image);
+        image.className = "class_image";
+        section3.appendChild(image);
         //add clickable image
         image.onclick = function() {
-        modal.style.display = "block";
-        display_modal(data.results[i].id);
+            modal.style.display = "block";
+            display_modal(data.results[i].id);
 
         }
      }
-
+    carousel(3);
   })
   .catch(error => {
-    console.warn('Error', err);
+    console.warn('Error', error);
   });
 
 
@@ -172,41 +177,53 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
 
   .then (
      data => {
-     for (let i = 0; i < 8; i++) {
+     for (let i = 0; i < 7; i++) {
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
-        section5.appendChild(image);
+        image.className = "class_image";
+        section4.appendChild(image);
         //add clickable image
         image.onclick = function() {
-        modal.style.display = "block";
-        display_modal(data.results[i].id);
+            modal.style.display = "block";
+            display_modal(data.results[i].id);
 
         }
      }
-
+    carousel(4);
   })
   .catch(error => {
-    console.warn('Error', err);
+    console.warn('Error', error);
   });
 
 
-//-----------------------------------------Carousel---------------------------------------------------
-//function carousel() {
-//
-//const slidesContainer = document.getElementById("section2");
-//const slide = document.querySelector(".slide");
-//const prevButton = document.getElementById("slide-arrow-prev1");
-//const nextButton = document.getElementById("slide-arrow-next"1);
-//
-//nextButton.addEventListener("click", () => {
-//  const slideWidth = slide.clientWidth;
-//  slidesContainer.scrollLeft += slideWidth;
-//});
-//
-//prevButton.addEventListener("click", () => {
-//  const slideWidth = slide.clientWidth;
-//  slidesContainer.scrollLeft -= slideWidth;
-//});
-//}
+//----------------------------------------- Carousel ---------------------------------------------------
+
+
+
+function carousel(indx) {
+
+const slidesContainer = document.getElementById("section" + indx);
+const slide = document.querySelector(".class_image");
+//console.log("test slide", slide );
+
+const prevButton = document.getElementById("btn_prev" + indx);
+const nextButton = document.getElementById("btn_next" + indx);
+
+//console.log("btn_prev", prevButton);
+
+
+nextButton.addEventListener("click", (event) => {
+  const slideWidth = slide.clientWidth;
+  console.log("test slideWidth", slideWidth);
+  slidesContainer.scrollLeft += slideWidth;
+
+});
+
+prevButton.addEventListener("click", () => {
+  const slideWidth = slide.clientWidth;
+  console.log("test slideWidth", slideWidth);
+  slidesContainer.scrollLeft -= slideWidth;
+});
+}
 
 
