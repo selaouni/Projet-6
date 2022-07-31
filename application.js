@@ -98,7 +98,7 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
      for (let i = 0; i < 7; i++) {
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
-        image.className = "class_image";
+        image.className = "class_image1";
         //image.classList.add("class_image");
         //image.setAttribute('class', 'class_image');
         section1.appendChild(image);
@@ -129,7 +129,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_
      for (let i = 0; i < 7; i++) {
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
-        image.className = "class_image";
+        image.className = "class_image2";
         section2.appendChild(image);
         //add clickable image
         image.onclick = function() {
@@ -155,7 +155,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Fantasy&sort_by=-imdb
      for (let i = 0; i < 7; i++) {
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
-        image.className = "class_image";
+        image.className = "class_image3";
         section3.appendChild(image);
         //add clickable image
         image.onclick = function() {
@@ -180,7 +180,7 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
      for (let i = 0; i < 7; i++) {
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
-        image.className = "class_image";
+        image.className = "class_image4";
         section4.appendChild(image);
         //add clickable image
         image.onclick = function() {
@@ -199,39 +199,20 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
 //----------------------------------------- Carousel ---------------------------------------------------
 
 function carousel(indx) {
+  var stream = document.querySelector("#section" + indx);
+  var items = document.querySelectorAll(".class_image" + indx);
 
-const slidesContainer = document.getElementById("section" + indx);
-const slide = document.querySelectorAll(".class_image");
-const prevButton = document.getElementById("btn_prev" + indx);
-const nextButton = document.getElementById("btn_next" + indx);
+  var prev = document.querySelector("#btn_prev" + indx);
 
+  prev.addEventListener('click', function() {
+    stream.insertBefore(items[items.length - 1], items[0]);
+    items = document.querySelectorAll(".class_image" + indx);
+  });
 
-var l = 0;
-l++;
-
-  nextButton.addEventListener("click", (event) => {
-    const slideWidth = slide.clientWidth;
-    slide.scrollLeft += slideWidth;
-    l++
-    console.log("test conteur", l);
-
-  if (l ==  7) {
-
-    slide.scrollLeft += slideWidth;
-    l = 0;
-  }
-});
-
-
-
-  prevButton.addEventListener("click", () => {
-    const slideWidth = slide.clientWidth;
-    slidesContainer.scrollLeft -= slideWidth;
-
-
-});
-//}
-}
-
-
+  var next = document.querySelector("#btn_next" + indx);
+  next.addEventListener('click', function() {
+    stream.appendChild(items[0]);
+    items = document.querySelectorAll(".class_image" + indx);
+  });
+};
 
