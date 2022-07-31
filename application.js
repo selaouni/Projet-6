@@ -198,32 +198,40 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
 
 //----------------------------------------- Carousel ---------------------------------------------------
 
-
-
 function carousel(indx) {
 
 const slidesContainer = document.getElementById("section" + indx);
-const slide = document.querySelector(".class_image");
-//console.log("test slide", slide );
-
+const slide = document.querySelectorAll(".class_image");
 const prevButton = document.getElementById("btn_prev" + indx);
 const nextButton = document.getElementById("btn_next" + indx);
 
-//console.log("btn_prev", prevButton);
 
+var l = 0;
+l++;
 
-nextButton.addEventListener("click", (event) => {
-  const slideWidth = slide.clientWidth;
-  console.log("test slideWidth", slideWidth);
-  slidesContainer.scrollLeft += slideWidth;
+  nextButton.addEventListener("click", (event) => {
+    const slideWidth = slide.clientWidth;
+    slide.scrollLeft += slideWidth;
+    l++
+    console.log("test conteur", l);
 
+  if (l ==  7) {
+
+    slide.scrollLeft += slideWidth;
+    l = 0;
+  }
 });
 
-prevButton.addEventListener("click", () => {
-  const slideWidth = slide.clientWidth;
-  console.log("test slideWidth", slideWidth);
-  slidesContainer.scrollLeft -= slideWidth;
+
+
+  prevButton.addEventListener("click", () => {
+    const slideWidth = slide.clientWidth;
+    slidesContainer.scrollLeft -= slideWidth;
+
+
 });
+//}
 }
+
 
 
