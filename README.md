@@ -37,12 +37,12 @@ les informations suivante sont affichées sous forme de modal à chaque fois on 
   
 Pour commencer à travailler sur ce projet:  
 
-    - installer l'API REST suivant les instructions sur le lien  (https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR), 
+    - installer l'API REST suivant les instructions sur le lien  https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR, 
     Elle fournit des informations cinématogratphiques à partir d'urls interrogeables à l'aide d'un client HTTP graphique comme un navigateur web ou postman,
     - lancer le serveur de l'API selon les instructions du lien ci dessus.
     - cloner ce repository sur votre machine
     - lancer le fichier "index.html" pour executer le programme
-    - 
+    
   
   ## Contributeurs:    
     - Sabah ELAOUNI    
@@ -55,7 +55,8 @@ Pour commencer à travailler sur ce projet:
 - Java script modal + image display with API request  -- 25/07/2022 
 - Correction of the Modals info + add comments + update HTML and CSS code -- 27/07/2022
 - Added display_info_best_movie function + update HTML and CSS code for the first section -- 27/07/2022
-- 
+- Global Update CSS, HTML and JS code sabah 31/07/2022
+
 
 
 
@@ -69,6 +70,7 @@ Pour commencer à travailler sur ce projet:
 - https://stackoverflow.com/    
 - https://medium.com/
 - https://webdesign.tutsplus.com/tutorials/how-to-build-a-simple-carousel-with-vanilla-javascript--cms-41734
+- https://weareferal.com/blog/creating-an-infinite-gallery-with-vanilla-js
 - Discord DA python
 
 
