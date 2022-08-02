@@ -1,13 +1,11 @@
 html {
-
     background-color: #111;
-    text : #FFFFFF;
 }
 
 body {
-  background-color: #111;
+
   color: #EEE;
-  font-family: 'Roboto Slab', serif;
+  font-family: monospace;
 }
 
 a{
@@ -18,13 +16,6 @@ a{
     color : white
 
 }
-
-.description_display{
- display: block;
-
- font-family: monospace;
-}
-
 
 h3{
     text-align: center;
@@ -40,48 +31,31 @@ img {
 }
 
 .btn_prev {
-  left: -25px;
-  padding-left: 0.30rem;
+
   border-radius: 0 2rem 2rem 0;
   float:left;
 }
 
 .btn_next {
-  right: -25px;
-  padding-left: 0.30rem;
+
   border-radius: 2rem 0 0 2rem;
   float:right;
 }
 
 .frame1 {
   max-width: 1200px;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
   border: 5px solid #EEE;
   margin: 30px;
   padding: 10px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  display: block;
-}
-
-
-.section1 {
-padding: 50px;
-
-}
-
-.series-frame h2{
-  margin-right: 20px;
 }
 
 button{
   color : black;
   border : 0 solid;
   border-radius : 5px;
-  display: inline-block;
   cursor: pointer;
 }
 
@@ -90,7 +64,6 @@ button{
   font-family: monospace;
   display: none;
   position: fixed;
-  z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%;
@@ -101,27 +74,22 @@ button{
 
 
 .modal-content {
-  background-color: #F8F8FF;
+  background-color: #EEE;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
-  width: 30%; /* Could be more or less, depending on screen size */
+  width: 30%;
   height: 85%;
 }
 
-/* Modal close */
+
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
-  font-weight: bold;
+
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+
 
 
 

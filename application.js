@@ -46,7 +46,43 @@ fetch("http://localhost:8000/api/v1/titles/" + movie_id)
 
 }
 
+//title and description display
+function display_info_best_movie(movie_id) {
+fetch("http://localhost:8000/api/v1/titles/" + movie_id)
+  .then(response => response.json())
+  .then (
+     data => {
+     var best_movie_title = document.getElementById("best_movie_title");
+     best_movie_title.textContent = `${data.title}`;
+
+     var best_movie_description = document.getElementById("best_movie_description");
+     best_movie_description.textContent = `${data.description}`;
+
+        })
+
+}
+//----------------------------------------- Carousel ---------------------------------------------------
+
+function carousel(indx) {
+  var stream = document.querySelector("#section" + indx);
+  var items = document.querySelectorAll(".class_image" + indx);
+
+  var prev = document.querySelector("#btn_prev" + indx);
+  prev.addEventListener('click', function() {
+    stream.insertBefore(items[items.length - 1], items[0]);
+    items = document.querySelectorAll(".class_image" + indx);
+  });
+
+  var next = document.querySelector("#btn_next" + indx);
+  next.addEventListener('click', function() {
+    stream.appendChild(items[0]);
+    items = document.querySelectorAll(".class_image" + indx);
+  });
+};
 //---------------------------------------------- Fetch API ---------------------------------------------------
+
+
+
 // Best movie
 fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=1")
   .then(response => response.json())
@@ -73,21 +109,7 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
     console.warn('Error', error);
   });
 
-//title and description display
-function display_info_best_movie(movie_id) {
-fetch("http://localhost:8000/api/v1/titles/" + movie_id)
-  .then(response => response.json())
-  .then (
-     data => {
-     var best_movie_title = document.getElementById("best_movie_title");
-     best_movie_title.textContent = `${data.title}`;
 
-     var best_movie_description = document.getElementById("best_movie_description");
-     best_movie_description.textContent = `${data.description}`;
-
-        })
-
-}
 
 // Seven best movies
 fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_size=7")
@@ -99,8 +121,6 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
         var image = document.createElement("img");
         image.src = data.results[i].image_url;
         image.className = "class_image1";
-        //image.classList.add("class_image");
-        //image.setAttribute('class', 'class_image');
         section1.appendChild(image);
 
         //add clickable image
@@ -119,11 +139,10 @@ fetch("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score%2C-votes&page_si
 
 
 
-//Category1:: Action movies
+//Category1: Action movies
 
 fetch("http://localhost:8000/api/v1/titles/?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=7")
   .then(response => response.json())
-
   .then (
      data => {
      for (let i = 0; i < 7; i++) {
@@ -196,23 +215,5 @@ fetch("http://localhost:8000/api/v1/titles/?genre_contains=Sci-Fi&sort_by=-imdb_
   });
 
 
-//----------------------------------------- Carousel ---------------------------------------------------
 
-function carousel(indx) {
-  var stream = document.querySelector("#section" + indx);
-  var items = document.querySelectorAll(".class_image" + indx);
-
-  var prev = document.querySelector("#btn_prev" + indx);
-
-  prev.addEventListener('click', function() {
-    stream.insertBefore(items[items.length - 1], items[0]);
-    items = document.querySelectorAll(".class_image" + indx);
-  });
-
-  var next = document.querySelector("#btn_next" + indx);
-  next.addEventListener('click', function() {
-    stream.appendChild(items[0]);
-    items = document.querySelectorAll(".class_image" + indx);
-  });
-};
 
