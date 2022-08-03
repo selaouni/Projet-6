@@ -55,21 +55,19 @@ Pour commencer à travailler sur ce projet:
 - Java script modal + image display with API request  -- 25/07/2022 
 - Correction of the Modals info + add comments + update HTML and CSS code -- 27/07/2022
 - Added display_info_best_movie function + update HTML and CSS code for the first section -- 27/07/2022
-- Global Update CSS, HTML and JS code sabah 31/07/2022
+- Global Update CSS, HTML and JS code 31/07/2022
+
+## Remarques:
+
+Il est à noter qur cette interface web a été testée avec succès sur trois navigateur: Google chrome, Safari et Firefox
 
 
-
-
-
-
-
-
-
-  ## Acknowledgments: 
+  ## Acknowledgments (code inspiration): 
 
 - https://stackoverflow.com/    
 - https://medium.com/
-- https://webdesign.tutsplus.com/tutorials/how-to-build-a-simple-carousel-with-vanilla-javascript--cms-41734
+- https://www.youtube.com/watch?v=2lt4HmLm8LE
+- https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide
 - https://weareferal.com/blog/creating-an-infinite-gallery-with-vanilla-js
 - Discord DA python
 
