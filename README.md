@@ -46,7 +46,10 @@ Pour commencer à travailler sur ce projet:
   
   ## Contributeurs:    
     - Sabah ELAOUNI    
-    - Driss Benjeloun (Mentor)  
+    
+  ## Mentor: 
+    - Driss Benjeloun:
+    
 
  ## Historique des Versions:    
  *Principales versions sous Github*
@@ -59,7 +62,7 @@ Pour commencer à travailler sur ce projet:
 
 ## Remarques:
 
-Il est à noter qur cette interface web a été testée avec succès sur trois navigateur: Google chrome, Safari et Firefox
+Il est à noter qur cette interface web a été testée avec succès sur trois navigateurs: Google chrome, Safari et Firefox
 
 
   ## Acknowledgments (code inspiration): 
